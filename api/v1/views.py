@@ -1,0 +1,20 @@
+from django.http import JsonResponse
+from django.views import View
+from django.core.handlers.wsgi import WSGIRequest
+from v1.services import points_array, gen_points, add_status
+
+
+class PointsView(View):
+
+    # noinspection PyMethodMayBeStatic
+    def get(self, request: WSGIRequest):
+        data = points_array()
+        return JsonResponse(data=data)
+
+
+class PointsGenerate(View):
+
+    # noinspection PyMethodMayBeStatic
+    def get(self, request: WSGIRequest):
+        gen_points()
+        return JsonResponse(data=add_status())
