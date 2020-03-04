@@ -9,3 +9,4 @@ __pycache__/
 *.py[cod]
 package-lock.json
 *.sqlite3
+local_settings.py
