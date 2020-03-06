@@ -4,7 +4,7 @@ import {get as getPoints} from "@actions/Points"
 import {get as getPolygons} from "@actions/Polygons"
 import Point from "@components/Point"
 import Polygon from "@components/Polygon"
-import Error from "@components/Error";
+import Loading from "@components/Loading"
 
 const mapStateToProps = state => {
     return {
@@ -35,7 +35,7 @@ class Home extends Component {
                 })}
             </svg>
         else
-            return <Error/>
+            return <Loading/>
     }
 }
 
