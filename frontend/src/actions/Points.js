@@ -1,7 +1,7 @@
 import {POINTS_GET} from "@actions/types"
 
 
-export const PointsGet = () => async (dispatch, getState) => {
+export const get = () => async (dispatch, getState) => {
     if (getState().points.points.length === 0) {
         const res = await fetch("http://localhost:8051/api/v1/points/")
         const data = await res.json()

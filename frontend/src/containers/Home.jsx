@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import {connect} from "react-redux"
-import {PointsGet} from "@actions/Points"
-import {PolygonsGet} from "@actions/Polygons"
+import {get as getPoints} from "@actions/Points"
+import {get as getPolygons} from "@actions/Polygons"
 import Point from "@components/Point"
 import Polygon from "@components/Polygon"
 
@@ -15,12 +15,12 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = {PointsGet, PolygonsGet}
+const mapDispatchToProps = {getPoints, getPolygons}
 
 class Home extends Component {
     componentDidMount() {
-        this.props.PointsGet()
-        this.props.PolygonsGet()
+        this.props.getPoints()
+        this.props.getPolygons()
     }
 
     render() {

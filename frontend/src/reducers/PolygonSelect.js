@@ -1,16 +1,13 @@
-import {POINTS_GET} from "@actions/types"
+import {POLYGON_SELECT} from "@actions/types"
 
 const InitialState = {
-    points: [],
+    polygon: null,
     isLoading: true,
-    error: null
 }
 
-export default function (
-    state = InitialState,
-    action) {
+export default function (state = InitialState, action) {
     switch (action.type) {
-        case POINTS_GET:
+        case POLYGON_SELECT:
             return {
                 ...state,
                 ...action.payload

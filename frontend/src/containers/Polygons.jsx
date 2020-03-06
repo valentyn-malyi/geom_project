@@ -1,6 +1,6 @@
-import React, {Component, Fragment} from "react"
+import React, {Component} from "react"
 import {connect} from "react-redux"
-import {PolygonsGet} from "@actions/Polygons"
+import {get} from "@actions/Polygons"
 import Polygon from "@components/Polygon";
 
 const mapStateToProps = state => {
@@ -8,15 +8,14 @@ const mapStateToProps = state => {
         polygons: state.polygons.polygons,
         isLoading: state.polygons.isLoading,
         error: state.polygons.error,
-        status: state.polygons.status
     }
 }
 
-const mapDispatchToProps = {PolygonsGet}
+const mapDispatchToProps = {get}
 
 class Polygons extends Component {
     componentDidMount() {
-        this.props.PolygonsGet()
+        this.props.get()
     }
 
     render() {

@@ -1,7 +1,7 @@
 import {POLYGONS_GET} from "@actions/types"
 
 
-export const PolygonsGet = () => async (dispatch, getState) => {
+export const get = () => async (dispatch, getState) => {
     if (getState().polygons.polygons.length === 0) {
         const res = await fetch("http://localhost:8051/api/v1/polygons/")
         const data = await res.json()

@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import {connect} from "react-redux"
-import {PointsGet} from "@actions/Points"
+import {get} from "@actions/Points"
 import Point from "@components/Point"
 
 const mapStateToProps = state => {
@@ -12,11 +12,11 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = {PointsGet}
+const mapDispatchToProps = {get}
 
 class Points extends Component {
     componentDidMount() {
-        this.props.PointsGet()
+        this.props.get()
     }
 
     render() {

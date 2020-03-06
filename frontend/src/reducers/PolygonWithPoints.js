@@ -1,16 +1,13 @@
-import {POINTS_GET} from "@actions/types"
+import {POLYGON_INTERSECT} from "@actions/types"
 
 const InitialState = {
-    points: [],
+    polygons: {},
     isLoading: true,
-    error: null
 }
 
-export default function (
-    state = InitialState,
-    action) {
+export default function (state = InitialState, action) {
     switch (action.type) {
-        case POINTS_GET:
+        case POLYGON_INTERSECT:
             return {
                 ...state,
                 ...action.payload
