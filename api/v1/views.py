@@ -9,6 +9,7 @@ class PointsView(View):
     # noinspection PyMethodMayBeStatic
     def get(self, request: WSGIRequest):
         data = points_array()
+        sleep(4)
         return JsonResponse(data=data)
 
 
@@ -23,6 +24,7 @@ class PolygonsGenerate(View):
     # noinspection PyMethodMayBeStatic
     def get(self, request: WSGIRequest):
         gen_triangles()
+        sleep(4)
         return JsonResponse(data=add_status())
 
 

@@ -1,10 +1,10 @@
 import React, {Component, Fragment} from "react"
-import errorImg from "@assets/error.gif"
+import LoadingImg from "@assets/loading.gif"
 
 class Loading extends Component {
     render() {
         return <Fragment>
-            <img src={errorImg} alt="Error Img"/>
+            <img src={LoadingImg} alt="Error Img"/>
         </Fragment>
     }
 }

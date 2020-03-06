@@ -24,8 +24,8 @@ class Home extends Component {
     }
 
     render() {
-        const isLoading = this.props.isLoadingPoints && this.props.isLoadingPolygons
-        if (isLoading)
+        const isLoading = this.props.isLoadingPoints || this.props.isLoadingPolygons
+        if (! isLoading)
             return <svg width="1600" height="900">
                 {this.props.points.map(p => {
                     return <Point key={p.id} x={p.x} y={p.y}/>
