@@ -2,7 +2,7 @@ import {POLYGONS_GET} from "@actions/types"
 
 const InitialState = {
     polygons: [],
-    isLoading: false,
+    isLoading: true,
     error: null
 }
 

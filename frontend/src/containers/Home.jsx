@@ -4,14 +4,14 @@ import {get as getPoints} from "@actions/Points"
 import {get as getPolygons} from "@actions/Polygons"
 import Point from "@components/Point"
 import Polygon from "@components/Polygon"
+import Error from "@components/Error";
 
 const mapStateToProps = state => {
     return {
         points: state.points.points,
-        isLoading: state.points.isLoading,
-        error: state.points.error,
-        status: state.points.status,
-        polygons: state.polygons.polygons
+        isLoadingPoints: state.points.isLoading,
+        polygons: state.polygons.polygons,
+        isLoadingPolygons: state.polygons.isLoading
     }
 }
 
@@ -24,14 +24,18 @@ class Home extends Component {
     }
 
     render() {
-        return <svg width="1600" height="900">
-            {this.props.points.map(p => {
-                return <Point key={p.id} x={p.x} y={p.y}/>
-            })}
-            {this.props.polygons.map(p => {
-                return <Polygon key={p.id} coordinates={p.coordinates}/>
-            })}
-        </svg>
+        const isLoading = this.props.isLoadingPoints && this.props.isLoadingPolygons
+        if (isLoading)
+            return <svg width="1600" height="900">
+                {this.props.points.map(p => {
+                    return <Point key={p.id} x={p.x} y={p.y}/>
+                })}
+                {this.props.polygons.map(p => {
+                    return <Polygon key={p.id} polygon={p}/>
+                })}
+            </svg>
+        else
+            return <Error/>
     }
 }
 

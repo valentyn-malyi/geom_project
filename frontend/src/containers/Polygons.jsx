@@ -20,10 +20,10 @@ class Polygons extends Component {
 
     render() {
         return <svg width="1600" height="900">
-                {this.props.polygons.map(p => {
-                    return <Polygon key={p.id} coordinates={p.coordinates}/>
-                })}
-            </svg>
+            {this.props.polygons.map(p => {
+                return <Polygon key={p.id} polygon={p}/>
+            })}
+        </svg>
     }
 }
 
