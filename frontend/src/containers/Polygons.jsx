@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import {connect} from "react-redux"
 import {get} from "@actions/Polygons"
 import Polygon from "@components/Polygon";
+import ErrorLoadingBoundary from "@components/ErrorLoadingBoundary";
 
 const mapStateToProps = state => {
     return {
@@ -19,11 +20,13 @@ class Polygons extends Component {
     }
 
     render() {
-        return <svg width="1600" height="900">
-            {this.props.polygons.map(p => {
-                return <Polygon key={p.id} polygon={p}/>
-            })}
-        </svg>
+        return <ErrorLoadingBoundary isLoading={this.props.isLoading} error={this.props.error}>
+            <svg width="1600" height="900">
+                {this.props.polygons.map(p => {
+                    return <Polygon key={p.id} polygon={p}/>
+                })}
+            </svg>
+        </ErrorLoadingBoundary>
     }
 }
 

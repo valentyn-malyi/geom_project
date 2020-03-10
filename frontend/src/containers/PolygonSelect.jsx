@@ -3,6 +3,7 @@ import {connect} from "react-redux"
 import {select} from "@actions/PolygonSelect"
 import PolygonSelectItem from "@components/PolygonSelectItem"
 import {get} from "@actions/Polygons"
+import ErrorLoadingBoundary from "@components/ErrorLoadingBoundary";
 
 
 function mapStateToProps(state) {
@@ -41,14 +42,16 @@ class PolygonSelect extends Component {
     }
 
     render() {
-        return <ul className="list-group">
-            {this.props.polygons.map(p => {
-                return <PolygonSelectItem
-                    key={p.id} id={p.id}
-                    isActive={this.polygonSelectItemIsActive(p)}
-                    polygonSelectItemClick={() => this.polygonSelectItemClick(p)}/>
-            })}
-        </ul>
+        return <ErrorLoadingBoundary isLoading={this.props.isLoading} error={this.props.error}>
+            <ul className="list-group">
+                {this.props.polygons.map(p => {
+                    return <PolygonSelectItem
+                        key={p.id} id={p.id}
+                        isActive={this.polygonSelectItemIsActive(p)}
+                        polygonSelectItemClick={() => this.polygonSelectItemClick(p)}/>
+                })}
+            </ul>
+        </ErrorLoadingBoundary>
     }
 }
 

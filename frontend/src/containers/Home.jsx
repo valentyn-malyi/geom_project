@@ -4,14 +4,16 @@ import {get as getPoints} from "@actions/Points"
 import {get as getPolygons} from "@actions/Polygons"
 import Point from "@components/Point"
 import Polygon from "@components/Polygon"
-import Loading from "@components/Loading"
+import ErrorLoadingBoundary from "@components/ErrorLoadingBoundary";
 
 const mapStateToProps = state => {
     return {
         points: state.points.points,
-        isLoadingPoints: state.points.isLoading,
         polygons: state.polygons.polygons,
-        isLoadingPolygons: state.polygons.isLoading
+        isLoadingPoints: state.points.isLoading,
+        isLoadingPolygons: state.polygons.isLoading,
+        errorPolygons: state.polygons.error,
+        errorPoints: state.points.error,
     }
 }
 
@@ -23,10 +25,12 @@ class Home extends Component {
         this.props.getPolygons()
     }
 
+
     render() {
         const isLoading = this.props.isLoadingPoints || this.props.isLoadingPolygons
-        if (! isLoading)
-            return <svg width="1600" height="900">
+        const error = this.props.errorPoints || this.props.errorPolygons
+        return <ErrorLoadingBoundary isLoading={isLoading} error={error}>
+            <svg width="1600" height="900">
                 {this.props.points.map(p => {
                     return <Point key={p.id} x={p.x} y={p.y}/>
                 })}
@@ -34,8 +38,8 @@ class Home extends Component {
                     return <Polygon key={p.id} polygon={p}/>
                 })}
             </svg>
-        else
-            return <Loading/>
+        </ ErrorLoadingBoundary>
+
     }
 }
 

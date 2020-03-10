@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import {connect} from "react-redux"
 import {get} from "@actions/Points"
 import Point from "@components/Point"
+import ErrorLoadingBoundary from "@components/ErrorLoadingBoundary"
 
 const mapStateToProps = state => {
     return {
@@ -20,11 +21,13 @@ class Points extends Component {
     }
 
     render() {
-        return <svg width="1600" height="900">
-                {this.props.points.map(p => {
-                    return <Point key={p.id} x={p.x} y={p.y}/>
-                })}
-            </svg>
+        return <ErrorLoadingBoundary isLoading={this.props.isLoading} error={this.props.error}>
+            <svg width="1600" height="900">
+            {this.props.points.map(p => {
+                return <Point key={p.id} x={p.x} y={p.y}/>
+            })}
+        </svg>
+        </ErrorLoadingBoundary>
     }
 }
 
