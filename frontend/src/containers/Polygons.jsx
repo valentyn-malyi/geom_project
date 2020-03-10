@@ -20,10 +20,11 @@ class Polygons extends Component {
     }
 
     render() {
+        const style = {fillOpacity: 0, stroke: "purple", strokeWidth: 1}
         return <ErrorLoadingBoundary isLoading={this.props.isLoading} error={this.props.error}>
             <svg width="1600" height="900">
                 {this.props.polygons.map(p => {
-                    return <Polygon key={p.id} polygon={p}/>
+                    return <Polygon key={p.id} polygon={p} style={style}/>
                 })}
             </svg>
         </ErrorLoadingBoundary>

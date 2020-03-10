@@ -6,9 +6,7 @@ const InitialState = {
     error: null
 }
 
-export default function (
-    state = InitialState,
-    action) {
+export default function (state = InitialState, action) {
     switch (action.type) {
         case POLYGONS_GET:
             return {

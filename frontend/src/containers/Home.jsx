@@ -29,13 +29,14 @@ class Home extends Component {
     render() {
         const isLoading = this.props.isLoadingPoints || this.props.isLoadingPolygons
         const error = this.props.errorPoints || this.props.errorPolygons
+        const style = {fillOpacity: 0, stroke: "purple", strokeWidth: 1}
         return <ErrorLoadingBoundary isLoading={isLoading} error={error}>
             <svg width="1600" height="900">
                 {this.props.points.map(p => {
                     return <Point key={p.id} x={p.x} y={p.y}/>
                 })}
                 {this.props.polygons.map(p => {
-                    return <Polygon key={p.id} polygon={p}/>
+                    return <Polygon key={p.id} polygon={p} style={style}/>
                 })}
             </svg>
         </ ErrorLoadingBoundary>
