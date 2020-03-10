@@ -64,10 +64,7 @@ def polygons_array() -> dict:
 def list_point_in_polygon(_id: int):
     polygon = Polygons.objects.filter(id=_id).first()
     if polygon is not None:
-        points = []
-        for point in Points.objects.all():
-            if point.point.within(polygon.poly):
-                points.append(point.pk)
+        points = [point.pk for point in Points.objects.all() if point.point.within(polygon.poly)]
         return add_status(points)
     else:
         return {
