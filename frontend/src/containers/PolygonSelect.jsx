@@ -3,7 +3,7 @@ import {connect} from "react-redux"
 import {select} from "@actions/PolygonSelect"
 import PolygonSelectItem from "@components/PolygonSelectItem"
 import {get} from "@actions/Polygons"
-import ErrorLoadingBoundary from "@components/ErrorLoadingBoundary";
+import ErrorLoadingBoundary from "@components/ErrorLoadingBoundary"
 
 
 function mapStateToProps(state) {

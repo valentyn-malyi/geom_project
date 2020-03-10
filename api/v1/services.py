@@ -49,13 +49,29 @@ def gen_triangles() -> None:
 def polygons_array() -> dict:
     a = []
     polygons = Polygons.objects.all()
-    for point in polygons:
-        coordinates = json.loads(point.poly.json)["coordinates"][0]
+    for polygon in polygons:
+        coordinates = json.loads(polygon.poly.json)["coordinates"][0]
         coordinates_str = " ".join([f"{int(x)},{int(y)}" for x, y in coordinates[:-1]])
         poly_dict = {
-            "id": point.id,
+            "id": polygon.id,
             "coordinates": coordinates_str
         }
         a.append(poly_dict)
     data = add_status(a)
     return data
+
+
+def list_point_in_polygon(_id: int):
+    polygon = Polygons.objects.filter(id=_id).first()
+    if polygon is not None:
+        points = []
+        for point in Points.objects.all():
+            if point.point.within(polygon.poly):
+                points.append(point.pk)
+        return add_status(points)
+    else:
+        return {
+            "status": "error",
+            "error": "IndexError",
+            "message": f"Polygon not Found with id {_id}"
+        }

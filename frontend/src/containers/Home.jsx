@@ -4,7 +4,7 @@ import {get as getPoints} from "@actions/Points"
 import {get as getPolygons} from "@actions/Polygons"
 import Point from "@components/Point"
 import Polygon from "@components/Polygon"
-import ErrorLoadingBoundary from "@components/ErrorLoadingBoundary";
+import ErrorLoadingBoundary from "@components/ErrorLoadingBoundary"
 
 const mapStateToProps = state => {
     return {

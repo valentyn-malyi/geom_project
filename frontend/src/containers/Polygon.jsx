@@ -2,7 +2,7 @@ import React, {Component} from "react"
 import {connect} from "react-redux"
 import {get} from "@actions/Polygons"
 import ComponentPolygon from "@components/Polygon"
-import ErrorLoadingBoundary from "@components/ErrorLoadingBoundary";
+import ErrorLoadingBoundary from "@components/ErrorLoadingBoundary"
 
 const mapStateToProps = state => {
     return {

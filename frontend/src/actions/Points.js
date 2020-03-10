@@ -25,7 +25,6 @@ export const get = () => async (dispatch, getState) => {
                     }
                 })
         } catch (e) {
-            console.log(e)
             dispatch({
                 type: POINTS_GET,
                 payload: {
