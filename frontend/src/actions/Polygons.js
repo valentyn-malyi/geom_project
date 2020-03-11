@@ -9,7 +9,7 @@ class Polygon {
 
 export const get = () => async (dispatch) => {
     try {
-        const res = await fetch("http://localhost:8051/api/v1/polygons/")
+        const res = await fetch("http://192.168.50.134:8051/api/v1/polygons/")
         const data = await res.json()
         if (data.error)
             dispatch({

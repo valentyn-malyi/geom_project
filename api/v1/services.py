@@ -31,14 +31,14 @@ def points_array() -> dict:
 
 def gen_points() -> None:
     Points.objects.all().delete()
-    for _ in range(1000):
+    for _ in range(10000):
         point = Point(geo_point())
         Points(point=point).save()
 
 
 def gen_triangles() -> None:
     Polygons.objects.all().delete()
-    for _ in range(5):
+    for _ in range(500):
         a = (geo_point())
         b = (geo_point())
         c = (geo_point())

@@ -10,7 +10,7 @@ export class Points {
 
 export const get = (polygon) => async (dispatch) => {
     try {
-        const res = await fetch(`http://localhost:8051/api/v1/polygon/${polygon.id}/points`)
+        const res = await fetch(`http://192.168.50.134:8051/api/v1/polygon/${polygon.id}/points`)
         const data = await res.json()
         if (data.error) {
             const points = new Points(false, data, [])
