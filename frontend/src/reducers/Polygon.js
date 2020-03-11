@@ -1,7 +1,7 @@
 import {POLYGONS_GET} from "@actions/types"
 
 const InitialState = {
-    polygons: [],
+    polygons: {},
     isLoading: true,
     error: null
 }

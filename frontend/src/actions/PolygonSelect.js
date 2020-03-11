@@ -8,7 +8,6 @@ export const select = (polygon) => (dispatch, getState) => {
             type: POLYGON_SELECT,
             payload: {
                 polygon: polygon,
-                isLoading: false,
             }
         })
     else {
@@ -17,7 +16,6 @@ export const select = (polygon) => (dispatch, getState) => {
                 type: POLYGON_SELECT,
                 payload: {
                     polygon: null,
-                    isLoading: false,
                 }
             })
         else
@@ -25,7 +23,6 @@ export const select = (polygon) => (dispatch, getState) => {
                 type: POLYGON_SELECT,
                 payload: {
                     polygon: polygon,
-                    isLoading: false,
                 }
             })
     }

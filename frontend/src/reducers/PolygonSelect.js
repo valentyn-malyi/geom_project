@@ -1,8 +1,7 @@
 import {POLYGON_SELECT} from "@actions/types"
 
 const InitialState = {
-    polygon: null,
-    isLoading: true,
+    polygon: null
 }
 
 export default function (state = InitialState, action) {

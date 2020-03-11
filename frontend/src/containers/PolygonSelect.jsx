@@ -6,14 +6,12 @@ import {get} from "@actions/Polygons"
 import ErrorLoadingBoundary from "@components/ErrorLoadingBoundary"
 
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
     return {
-        polygon: state.polygonSelect.polygon,
-        isLoadingPolygonSelect: state.polygonSelect.isLoading,
         polygons: state.polygons.polygons,
-        isLoadingPolygons: state.polygons.isLoading,
+        isLoading: state.polygons.isLoading,
         error: state.polygons.error,
-        status: state.polygons.status
+        polygon: state.polygonSelect.polygon
     }
 }
 
@@ -42,14 +40,18 @@ class PolygonSelect extends Component {
     }
 
     render() {
+        const polygonsComponents = function (self, polygons) {
+            const components = []
+            for (let polygon of Object.values(polygons)) {
+                components.push(<PolygonSelectItem key={polygon.id} id={polygon.id}
+                    isActive={self.polygonSelectItemIsActive(polygon)}
+                    polygonSelectItemClick={() => self.polygonSelectItemClick(polygon)}/>)
+            }
+            return components
+        }
         return <ErrorLoadingBoundary isLoading={this.props.isLoading} error={this.props.error}>
             <ul className="list-group">
-                {this.props.polygons.map(p => {
-                    return <PolygonSelectItem
-                        key={p.id} id={p.id}
-                        isActive={this.polygonSelectItemIsActive(p)}
-                        polygonSelectItemClick={() => this.polygonSelectItemClick(p)}/>
-                })}
+                {polygonsComponents(this, this.props.polygons)}
             </ul>
         </ErrorLoadingBoundary>
     }

@@ -4,12 +4,19 @@ import {Link} from "react-router-dom"
 
 class PolygonSelectItem extends Component {
     render() {
-        return <Link to={`polygon/${this.props.id}`}>
-            <li className={`list-group-item ${this.props.isActive ? "active" : ""}`}
-                onClick={this.props.polygonSelectItemClick}>
+        if (this.props.isActive)
+            return <li className={`list-group-item ${this.props.isActive ? "active" : ""}`}
+                       onClick={this.props.polygonSelectItemClick}>
                 {`Poligon(${this.props.id})`}
             </li>
-        </Link>
+        else
+            return <Link to={`polygon/${this.props.id}`}>
+                <li className={`list-group-item ${this.props.isActive ? "active" : ""}`}
+                    onClick={this.props.polygonSelectItemClick}>
+                    {`Poligon(${this.props.id})`}
+                </li>
+            </Link>
+
     }
 }
 

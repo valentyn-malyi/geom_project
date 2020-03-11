@@ -7,6 +7,5 @@ import polygonWithPoints from "@reducers/PolygonWithPoints"
 export default combineReducers({
     points,
     polygons,
-    polygonSelect,
-    polygonWithPoints
+    polygonSelect
 })

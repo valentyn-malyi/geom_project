@@ -1,41 +1,52 @@
 import {POINTS_GET} from "@actions/types"
 
 
-export const get = () => async (dispatch, getState) => {
-    if (getState().points.points.length === 0) {
-        try {
-            const res = await fetch("http://localhost:8051/api/v1/points/")
-            const data = await res.json()
-            if (data.error)
-                dispatch({
-                    type: POINTS_GET,
-                    payload: {
-                        points: [],
-                        isLoading: false,
-                        error: data
-                    }
-                })
-            else
-                dispatch({
-                    type: POINTS_GET,
-                    payload: {
-                        points: data.data,
-                        isLoading: false,
-                        error: null
-                    }
-                })
-        } catch (e) {
+class Point {
+    constructor(id, x, y) {
+        this.x = x
+        this.y = y
+        this.id = id
+    }
+}
+
+export const get = () => async (dispatch) => {
+    try {
+        const res = await fetch("http://localhost:8051/api/v1/points/")
+        const data = await res.json()
+        if (data.error)
             dispatch({
                 type: POINTS_GET,
                 payload: {
-                    points: [],
+                    points: {},
                     isLoading: false,
-                    error: {
-                        error: e.name,
-                        message: e.message
-                    }
+                    error: data
+                }
+            })
+        else {
+            const points = {}
+            for (let point of data.data) {
+                points[point.id] = new Point(point.id, point.x, point.y)
+            }
+            dispatch({
+                type: POINTS_GET,
+                payload: {
+                    points: points,
+                    isLoading: false,
+                    error: null
                 }
             })
         }
+    } catch (e) {
+        dispatch({
+            type: POINTS_GET,
+            payload: {
+                points: {},
+                isLoading: false,
+                error: {
+                    error: e.name,
+                    message: e.message
+                }
+            }
+        })
     }
 }

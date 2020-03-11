@@ -1,7 +1,5 @@
 import React, {Component} from "react"
 import {HashRouter, Switch, Route} from "react-router-dom"
-import Points from "@containers/Points"
-import Polygons from "@containers/Polygons"
 import Header from "@containers/Header"
 import Polygon from "@containers/Polygon"
 import "@assets/bootstrap.min.css"
@@ -17,9 +15,9 @@ class App extends Component {
             <HashRouter>
                 <Header/>
                 <Switch>
-                    <Route exact path="/" component={Home}/>
-                    <Route path="/polygons" component={Polygons}/>
-                    <Route path="/points" component={Points}/>
+                    <Route exact path="/" component={() => <Home showPolygons={true} showPoints={true}/>}/>
+                    <Route path="/polygons" component={() => <Home showPolygons={true} showPoints={false}/>}/>
+                    <Route path="/points" component={() => <Home showPolygons={false} showPoints={true}/>}/>
                     <Route path="/polygonselect" component={PolygonSelect}/>
                     <Route path="/polygon/:id" component={Polygon}/>
                 </Switch>
