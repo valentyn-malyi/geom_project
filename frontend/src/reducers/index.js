@@ -1,11 +1,12 @@
 import {combineReducers} from "redux"
 import points from "@reducers/Points"
-import polygons from "@reducers/Polygon"
+import polygons from "@reducers/Polygons"
 import polygonSelect from "@reducers/PolygonSelect"
-import polygonWithPoints from "@reducers/PolygonWithPoints"
+import polygonsWithPoints from "@reducers/PolygonsWithPoints"
 
 export default combineReducers({
     points,
     polygons,
-    polygonSelect
+    polygonSelect,
+    polygonsWithPoints
 })

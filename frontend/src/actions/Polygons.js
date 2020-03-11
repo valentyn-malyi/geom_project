@@ -1,18 +1,9 @@
 import {POLYGONS_GET} from "@actions/types"
 
-class Points {
-    constructor() {
-        this.isLoading = true
-        this.error = null
-        this.points = []
-    }
-}
-
 class Polygon {
     constructor(id, coordinates) {
         this.coordinates = coordinates
         this.id = id
-        this.points = new Points()
     }
 }
 

@@ -25,7 +25,8 @@ class PolygonSelect extends Component {
     }
 
     componentDidMount() {
-        this.props.get()
+        if (Object.keys(this.props.polygons).length === 0)
+            this.props.get()
     }
 
     polygonSelectItemClick(polygon) {
@@ -43,9 +44,12 @@ class PolygonSelect extends Component {
         const polygonsComponents = function (self, polygons) {
             const components = []
             for (let polygon of Object.values(polygons)) {
-                components.push(<PolygonSelectItem key={polygon.id} id={polygon.id}
-                    isActive={self.polygonSelectItemIsActive(polygon)}
-                    polygonSelectItemClick={() => self.polygonSelectItemClick(polygon)}/>)
+                components.push(
+                    <PolygonSelectItem
+                        key={polygon.id} id={polygon.id}
+                        isActive={self.polygonSelectItemIsActive(polygon)}
+                        polygonSelectItemClick={() => self.polygonSelectItemClick(polygon)}
+                    />)
             }
             return components
         }

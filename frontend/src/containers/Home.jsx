@@ -44,7 +44,7 @@ class Home extends Component {
                 return []
             const components = []
             for (let point of Object.values(points)) {
-                components.push(<Point key={point.id} x={point.x} y={point.y}/>)
+                components.push(<Point key={point.id} x={point.x} y={point.y} color="black"/>)
             }
             return components
         }

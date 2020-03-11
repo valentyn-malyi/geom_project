@@ -4,7 +4,7 @@ import LoadingImg from "@assets/loading.gif"
 class Loading extends Component {
     render() {
         return <Fragment>
-            <img src={LoadingImg} alt="Error Img"/>
+            <img src={LoadingImg} alt="Loading Img"/>
         </Fragment>
     }
 }
